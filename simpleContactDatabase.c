@@ -49,8 +49,22 @@ void addContact(struct Contact contacts[], int *count) {
     printf("Contact added successfully.\n");
 }
 
+int findContact(struct Contact contacts[], int *count,char searchName[50]) {
+    for (int i = 0; i < *count; i++) {
+        if (strstr(contacts[i].name, searchName) != NULL) {
+             printf("Name: %s\n", contacts[i].name);
+             printf("Phone: %s\n", contacts[i].phone);
+             printf("Email: %s\n", contacts[i].email);
+        }
+        else{printf("No matching contact found.\n");}
+        
+    }
+    return -1;
+}
+
 int main (){
     int choice;
+    char searchinput[50];
     while (1)
     {
         printf("\n===== Contact Management System =====\n");
@@ -64,7 +78,6 @@ int main (){
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-
         switch (choice)
         {
             case 1:
@@ -73,14 +86,16 @@ int main (){
             case 2:
                 viewContacts();
                 break;
+            case 3:
+                printf("search name;\n");
+                scanf("%s", searchinput);
+                findContact(contacts, &count, searchinput);
+                break;
 
             default:
                 printf("Invalid choice. Please try again.\n");
         }
     }
-   
-    
 
-   
     return 0;
 }
