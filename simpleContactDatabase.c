@@ -57,14 +57,47 @@ int findContact(struct Contact contacts[], int *count,char searchName[50]) {
              printf("Email: %s\n", contacts[i].email);
         }
         else{printf("No matching contact found.\n");}
-        
     }
     return -1;
+}
+
+void updateContact(struct Contact contacts[], int *count, char input[50]){
+    printf("What would you like to change (name/email/phone/all)? ");
+    scanf("%49s", input);
+    for(int i = 0; i < *count; i++)
+        if (strcmp(input, "name") == 0) {
+            printf("New name: ");
+            scanf("%49s", contacts[i].name);
+        } else if (strcmp(input, "email") == 0) {
+            printf("New email: ");
+            scanf("%49s", contacts[i].email);
+        } else if (strcmp(input, "phone") == 0) {
+            printf("New phone: ");
+            scanf("%49s", contacts[i].phone);
+        } else if (strcmp(input, "all") == 0) {
+            printf("New name: ");
+            scanf("%49s", contacts[i].name);
+            printf("New phone: ");
+            scanf("%49s", contacts[i].phone);
+            printf("New email: ");
+            scanf("%49s", contacts[i].email);
+        } else {
+            printf("Unknown field.\n");
+        }
+}
+
+void deleteContact(struct Contact contacts[], int *count, char input[50]){
+    printf("input name to delete");
+    scanf("%49s", input);
+    for(int i = 0; i < *count; i++){
+        
+    }
 }
 
 int main (){
     int choice;
     char searchinput[50];
+    char input[50];
     while (1)
     {
         printf("\n===== Contact Management System =====\n");
@@ -91,7 +124,12 @@ int main (){
                 scanf("%s", searchinput);
                 findContact(contacts, &count, searchinput);
                 break;
-
+            case 4:
+                updateContact(contacts, &count, input);
+                break;
+            case 5:
+            
+                break;
             default:
                 printf("Invalid choice. Please try again.\n");
         }
