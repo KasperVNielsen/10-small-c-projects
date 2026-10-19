@@ -87,10 +87,17 @@ void updateContact(struct Contact contacts[], int *count, char input[50]){
 }
 
 void deleteContact(struct Contact contacts[], int *count, char input[50]){
-    printf("input name to delete");
+   
+    printf("input name to delete:\n");
     scanf("%49s", input);
     for(int i = 0; i < *count; i++){
-        
+        if(strstr(input,contacts[i].name) != NULL){
+            contacts[i].name;
+            contacts[i].phone;
+            contacts[i].email;
+            (*count)--;
+            break;
+        }
     }
 }
 
@@ -128,7 +135,7 @@ int main (){
                 updateContact(contacts, &count, input);
                 break;
             case 5:
-            
+                deleteContact(contacts, &count, input);
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
