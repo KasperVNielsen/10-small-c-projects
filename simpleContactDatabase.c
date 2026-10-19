@@ -96,6 +96,7 @@ void deleteContact(struct Contact contacts[], int *count, char input[50]){
             contacts[i].phone;
             contacts[i].email;
             (*count)--;
+            printf("deleted sucessfully");
             break;
         }
     }
